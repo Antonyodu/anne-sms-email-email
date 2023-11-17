@@ -1,7 +1,6 @@
 // @ts-ignore
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import fetch from 'node-fetch';
-
 export default function handler(req: VercelRequest, res: VercelResponse) {
   const { subject, body } = req.query
 
