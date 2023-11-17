@@ -3,7 +3,6 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import fetch from 'node-fetch';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  try {
     // Assuming the request body is in JSON format
     const { subject, body } = JSON.parse(req.body);
 
@@ -37,8 +36,5 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         twilioResponse,
       },
     });
-  } catch (error) {
-    console.error('Error:', error);
-    return res.status(500).json({ error: error.message || 'Internal Server Error' });
-  }
+  
 }
