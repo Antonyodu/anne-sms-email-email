@@ -2,13 +2,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import fetch from 'node-fetch';
 
-export default async function handler(req, res) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
+    // Assuming the request body is in JSON format
     const { subject, body } = JSON.parse(req.body);
-
-    if (!subject || !body) {
-      return res.status(400).json({ error: 'Invalid request body' });
-    }
 
     const accountSid = 'AC4ace975430e21483e572e120cb6a0b96';
     const authToken = 'fb4eaed8dba66ded28169729fe90b215';
@@ -42,6 +39,6 @@ export default async function handler(req, res) {
     });
   } catch (error) {
     console.error('Error:', error);
-    return res.status(500).json({ error: error });
+    return res.status(500).json({ error: error.message || 'Internal Server Error' });
   }
 }
