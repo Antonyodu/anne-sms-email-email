@@ -15,7 +15,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
 
   const authHeader = 'Basic ' + Buffer.from(`${accountSid}:${authToken}`).toString('base64');
 
-  fetch(url, {
+   fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -33,6 +33,6 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
 
 
   return res.json({
-    data: req.query
+    data: { subject, body }
   })
 }
