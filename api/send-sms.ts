@@ -13,7 +13,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const accountSid = 'AC4ace975430e21483e572e120cb6a0b96';
   const authToken = 'fb4eaed8dba66ded28169729fe90b215';
   const twilioPhone = '+13344630152';
-  const recipientPhone = subject.split('+')[0];
+  const recipientPhone = subject.split('|')[0].trim();
   const messageBody = body;
 
   const url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
@@ -27,7 +27,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       'Authorization': authHeader,
     },
     body: new URLSearchParams({
-      'To': "+" + recipientPhone,
+      'To':  recipientPhone,
       'From': twilioPhone,
       'Body': messageBody,
     } as any), // 'as any' if TypeScript complains
