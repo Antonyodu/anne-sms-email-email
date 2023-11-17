@@ -2,8 +2,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import fetch from 'node-fetch';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const { subject, body } = req.query;
+export default async function handler(req, res) {
+  const { subject, body } = req;
 
   const accountSid = 'AC4ace975430e21483e572e120cb6a0b96';
   const authToken = 'fb4eaed8dba66ded28169729fe90b215';
