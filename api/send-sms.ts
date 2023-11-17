@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
   try {
-    const { subject, body } = req.query;
+    const { subject, body } = JSON.parse(req.query);
 
     if (!subject || !body) {
       return res.status(400).json({ error: 'Invalid request body' });
@@ -42,6 +42,6 @@ export default async function handler(req, res) {
     });
   } catch (error) {
     console.error('Error:', error);
-    return res.status(500).json({ error: error});
+    return res.status(500).json({ error: error });
   }
 }
